@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">hw_3</string>
+    <string name="get_started">GET STARTED</string>
+
+    <string name="juxd">Junior UX Designer</string>
+    <string name="jpd">Junior Product Designer</string>
+
+    <string name="canva">Canva</string>
+</resources>
