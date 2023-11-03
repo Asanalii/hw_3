@@ -11,18 +11,44 @@
         android:label="MainFragment"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_secondFragment"
-            app:destination="@id/secondFragment"
+            android:id="@+id/action_mainFragment_to_archiveFragment"
+            app:destination="@id/archiveFragment"
             />
     </fragment>
 
     <fragment
-        android:id="@+id/secondFragment"
-        android:name="com.example.hw_3.SecondFragment"
+        android:id="@+id/archiveFragment"
+        android:name="com.example.hw_3.ArchiveFragment"
         android:label="SecondFragment"
         tools:layout="@layout/fragment_archive">
         <argument
             android:name="Name"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_archiveFragment_to_jobInfoFragment"
+            app:destination="@+id/jobInfoFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/jobInfoFragment"
+        android:name="com.example.hw_3.JobInfoFragment"
+        android:label="jobInfoFragment"
+        tools:layout="@layout/fragment_job_info">
+        <argument
+            android:name="name"
+            app:argType="string" />
+
+        <argument
+            android:name="salary"
+            app:argType="string" />
+
+
+        <action
+            android:id="@+id/action_jobInfoFragment_to_archiveFragment"
+            app:destination="@id/archiveFragment"
+            />
     </fragment>
 </navigation>

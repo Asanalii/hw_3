@@ -1,9 +1,12 @@
 package com.example.hw_3
 
 
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -66,6 +69,18 @@ class JobListAdapter(
         if(item.viewType==JobListType.SPACING_VIEW){
             (holder as? SpacingViewHolder)?.bindView(item)
         }
+
+        holder.itemView.setOnClickListener{
+            val item = items[position]
+            if(item.viewType == JobListType.JOB_VIEW){
+                val bundle = Bundle().apply {
+                    putString("name",item.name)
+                    putString("salary",item.salaryRange)
+                }
+                it.findNavController().navigate(R.id.action_archiveFragment_to_jobInfoFragment,bundle)
+            }
+        }
+
     }
 
     override fun getItemViewType(position: Int): Int {

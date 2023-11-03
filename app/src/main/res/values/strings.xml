@@ -6,4 +6,15 @@
     <string name="jpd">Junior Product Designer</string>
 
     <string name="canva">Canva</string>
+
+    <string name="bulleted_list">
+    <![CDATA[
+    <ul>
+        <li>Drive the design process with cross-functional partners and design leads.</li>
+        <li>Design new experiences and patterns in a complex ecosystem and across platforms.</li>
+        <li>Partner with UX Research and Content Strategists through the design process.</li>
+        <li>Work closely with Product and Engineering to ensure a high quality implementation.</li>
+    </ul>
+    ]]>
+</string>
 </resources>

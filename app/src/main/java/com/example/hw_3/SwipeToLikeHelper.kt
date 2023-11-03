@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw_3.decoration.dp
 
-fun RecyclerView.swipeToLike(deleteAction: (Int) -> Unit) {
-    ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.START){
+fun RecyclerView.swipeToLike(likeAction: (Int) -> Unit) {
+    ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.END){
         val rectangleLength = 97.dp
         val maxScroll = 80.dp
         val image = BitmapFactory.decodeResource(resources, R.drawable.ic_heart)
@@ -31,7 +31,7 @@ fun RecyclerView.swipeToLike(deleteAction: (Int) -> Unit) {
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             if (viewHolder is JobListAdapter.JobViewHolder) {
                 context.vibratePhone()
-//                deleteAction.invoke(viewHolder.adapterPosition)
+                likeAction.invoke(viewHolder.adapterPosition)
             }
         }
 
@@ -48,28 +48,28 @@ fun RecyclerView.swipeToLike(deleteAction: (Int) -> Unit) {
                 actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
                 with(viewHolder.itemView) {
                     val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-                    val scrollOfSet = (-dX).toInt()
+                    val scrollOfSet = dX.toInt()
 
                     if (scrollOfSet > 1){
                         paint.color = ContextCompat.getColor(context, R.color.blue)
                         val back = RectF(
-                            right.toFloat() - rectangleLength,
+                            left.toFloat(),
                             top.toFloat(),
-                            right.toFloat(),
+                            left.toFloat() + rectangleLength,
                             bottom.toFloat(),
                         )
                         c.drawRect(back, paint)
                     }
 
                     if (scrollOfSet < maxScroll) {
-                        super.onChildDraw(c, recyclerView, viewHolder, -scrollOfSet.toFloat(), dY, actionState, isCurrentlyActive)
+                        super.onChildDraw(c, recyclerView, viewHolder, scrollOfSet.toFloat(), dY, actionState, isCurrentlyActive)
                     }
 
                     if (scrollOfSet > 50.dp ) {
                         val iconRect = RectF(
-                            right.toFloat() - 50.dp,
+                            left.toFloat() + 30.dp,
                             top.toFloat() + 28.dp,
-                            right.toFloat() - 30.dp,
+                            left.toFloat() + 50.dp,
                             bottom.toFloat() - 30.dp
                         )
                         c.drawBitmap(image, null, iconRect, paint)

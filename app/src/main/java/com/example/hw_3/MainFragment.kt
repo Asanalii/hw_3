@@ -11,7 +11,7 @@ class MainFragment: BaseFragment<FragmentMainBinding>(FragmentMainBinding::infla
 
         binding.getStarted.setOnClickListener{
             findNavController().navigate(
-                MainFragmentDirections.actionMainFragmentToSecondFragment("Hello second fragment")
+                MainFragmentDirections.actionMainFragmentToArchiveFragment("Hello second fragment")
             )
         }
     }
