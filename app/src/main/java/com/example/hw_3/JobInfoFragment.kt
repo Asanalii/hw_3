@@ -1,6 +1,8 @@
 package com.example.hw_3
 
+import android.os.Bundle
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +31,9 @@ class JobInfoFragment: BaseFragment<FragmentJobInfoBinding>(FragmentJobInfoBindi
             )
         }
 
+        binding.textView.text = HtmlCompat.fromHtml(getString(R.string.bulleted_list), HtmlCompat.FROM_HTML_MODE_COMPACT)
 
     }
+
+
 }
